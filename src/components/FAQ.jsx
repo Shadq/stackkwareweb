@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const FAQ = () => {
+  useEffect(() => {
+    const loadVoiceflowChatWidget = () => {
+      const script = document.createElement("script");
+      script.onload = () => {
+        window.voiceflow.chat.load({
+          verify: { projectID: "65bf916bb1559696681bd632" },
+          url: "https://general-runtime.voiceflow.com",
+          versionID: "production",
+        });
+      };
+      script.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+      script.type = "text/javascript";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    };
+
+    loadVoiceflowChatWidget();
+
+    // Cleanup function to remove the script when component unmounts
+    return () => {
+      const scripts = document.getElementsByTagName("script");
+      for (let i = 0; i < scripts.length; i++) {
+        if (scripts[i].src === "https://cdn.voiceflow.com/widget/bundle.mjs") {
+          scripts[i].parentNode.removeChild(scripts[i]);
+          break;
+        }
+      }
+    };
+  }, []);
+
   return (
     <div
       className="mt-56 flex flex-col text-center justify-center items-center"

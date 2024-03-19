@@ -31,6 +31,9 @@ const Header = () => {
         <Link to="faq" spy={true} smooth={true} offset={-100} duration={500}>
           <li>FAQ</li>
         </Link>
+        <a href="https://creator.voiceflow.com/prototype/65bf916bb1559696681bd633">
+          ChatBot (by Alexander Matias)
+        </a>
       </ul>
       <Link to="contact" spy={true} smooth={true} offset={-100} duration={500}>
         <button className="hover:bg-gradient-to-bl from-amber-300 via-red-500 to-purple-800 bg-black text-white rounded-lg pl-7 pr-7 pt-2.5 pb-2.5">
